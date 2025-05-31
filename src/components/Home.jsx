@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/Home.css';
-import DiscordImage from '../img/Discord.png';
+import DiscordImage from '../img/discord.png';
 import UsuariosImage from '../img/usuarios.png';
 import CursosImage from '../img/cursos.png';
 
