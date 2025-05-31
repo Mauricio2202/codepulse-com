@@ -1,0 +1,55 @@
+
+.titleHome {
+    color: #dee2e6;
+    font-size: 5rem;
+}
+
+.stylingLiryc {
+    color: #6fffe9;
+    transition: text-shadow 0.4s ease-in-out;
+    text-shadow: 0 0 0px #6fffe9;
+}
+.stylingLiryc:hover {
+    text-shadow: 0 0 5px #6fffe9;
+}
+
+.titleSubtitle {
+    color: #fff;
+    position: relative;
+    top: 50px;
+    padding: 5px;
+}
+
+svg {
+    color: #FFF;
+    width: 50px;
+    position: relative;
+    top: 130px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+svg:hover {
+    color: #6fffe9;
+}
+
+.art {
+    position: relative;
+    top: 250px;
+}
+
+.card {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    box-shadow: 0 0 30px #6fffe9;
+    box-shadow: 0 0 80px #6fffe9;
+    box-shadow: 0 0 250px #6fffe9;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #fcfffd;
+}
+
+.titleCard {
+    color: #000;
+}
