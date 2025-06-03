@@ -37,7 +37,8 @@ function Home() {
             </article>
             <div className='invisible'></div>
 
-            <h1 className='titleHome'>Lo que muchos nos piden: <span className='stylingLiryc'>Cursos</span></h1>
+            <h1 className='titleHome'>Lo que muchos nos piden</h1>
+            <h1 className='titleHome'><span className='stylingLiryc'>Cursos</span></h1>
             <article className="art">
                 <div className="cardThree">
                     <h2 className='titleCard'>Cursos unificados</h2>
