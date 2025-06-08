@@ -1,228 +1,377 @@
-.titleHome {
-    color: #dee2e6;
-    font-size: 5rem;
+/* Estilo Deep Web Elegante - Versión Compacta */
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --secondary-color: #bb86fc;
+    --accent-color: #03dac6;
+    --card-bg: rgba(30, 30, 30, 0.8);
+    --terminal-bg: rgba(20, 20, 20, 0.95);
+    --prompt-color: #cf6679;
+    --glow-effect: rgba(187, 134, 252, 0.3);
+    --course-color: #61dafb; /* Color base que será sobrescrito */
 }
 
-.stylingLiryc {
-    color: #6fffe9;
-    transition: text-shadow 0.4s ease-in-out;
-    text-shadow: 0 0 0px #6fffe9;
+/* Animaciones mejoradas */
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.9; }
 }
 
-.stylingLiryc:hover {
-    text-shadow: 0 0 5px #6fffe9;
+@keyframes subtleGlow {
+    0%, 100% { box-shadow: 0 0 3px var(--glow-effect); }
+    50% { box-shadow: 0 0 10px var(--glow-effect); }
 }
 
-.titleSubtitle {
-    color: #fff;
+@keyframes cursor-blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@keyframes matrix-rain {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(100vh); }
+}
+
+/* Reset de espacios no deseados */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Estructura principal compacta */
+.matrix-container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
     position: relative;
-    top: 50px;
-    padding: 5px;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(187, 134, 252, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(3, 218, 198, 0.08) 0%, transparent 50%);
+    padding-top: 0;
 }
 
-svg {
-    color: #FFF;
-    width: 50px;
-    position: relative;
-    top: 130px;
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
-}
-
-svg:hover {
-    color: #6fffe9;
-}
-
-.art {
-    position: relative;
-}
-
-.card,
-.cardDos,
-.cardThree {
-    width: 500px;
-    margin: 40px auto;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.card {
-    background-color: #004346;
-    box-shadow: 0 0 250px #6fffe9;
-    margin-top: 250px;
-    margin-bottom: 60px;
-    height: 500px;
-}
-
-.cardDos {
-    background: linear-gradient(145deg, #0d0d2b, #1a1a40);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    height: auto;
-    margin-bottom: 40px;
-}
-
-.cardThree {
-    background: linear-gradient(145deg, #331010, #801515);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    height: auto;
-}
-
-.titleCard {
-    color: #FFF;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.descriptionCard {
-    color: #DDD;
+/* Efecto Matrix Rain (más sutil) */
+.matrix-column {
+    position: fixed;
+    top: 0;
     font-size: 16px;
-    text-align: justify;
-    line-height: 1.6;
+    line-height: 1.2;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    color: rgba(0, 255, 65, 0.15);
 }
 
-.imageSocial {
-    width: 300px;
-    cursor: help;
-    margin-top: 15px;
+/* Ventana terminal compacta */
+.terminal-window {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--terminal-bg);
+    backdrop-filter: blur(6px);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
 }
 
-.invisible {
-    height: 100px;
+/* Header compacto */
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: rgba(30, 30, 30, 0.95);
+    border-bottom: 1px solid var(--secondary-color);
 }
 
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-btn {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.terminal-btn:hover {
+    opacity: 1;
+}
+
+.terminal-btn.close { background-color: #ff5f56; }
+.terminal-btn.minimize { background-color: #ffbd2e; }
+.terminal-btn.maximize { background-color: #27c93f; }
+
+.terminal-title {
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+/* Cuerpo principal ajustado */
+.terminal-body {
+    padding: 12px 20px;
+    overflow-x: hidden;
+}
+
+/* Líneas de terminal compactas */
+.terminal-line {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: flex-start;
+    line-height: 1.4;
+}
+
+.command-section {
+    margin: 20px 0 12px;
+}
+
+.terminal-prompt {
+    color: var(--prompt-color);
+    margin-right: 8px;
+    user-select: none;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.terminal-text {
+    flex: 1;
+    letter-spacing: 0.3px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: var(--accent-color);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: cursor-blink 0.9s infinite;
+}
+
+/* Efecto glitch mejorado */
+.glitch {
+    position: relative;
+    color: var(--secondary-color);
+    animation: flicker 7s infinite;
+}
+
+.glitch::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -1px;
+    text-shadow: 1px 0 #ff00ff;
+    animation: glitch 2.5s infinite linear alternate-reverse;
+    clip: rect(0, 900px, 0, 0);
+    opacity: 0.8;
+}
+
+/* Grid de tarjetas ajustado */
+.terminal-cards, .terminal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin: 18px 0;
+}
+
+.terminal-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(187, 134, 252, 0.25);
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.terminal-card:hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    animation: subtleGlow 2.5s infinite;
+}
+
+.terminal-command {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.terminal-content {
+    margin-bottom: 12px;
+}
+
+.terminal-content h3 {
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+    font-size: 1.15rem;
+}
+
+.terminal-content p {
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: rgba(224, 224, 224, 0.85);
+    font-size: 0.9rem;
+}
+
+.terminal-decoration {
+    font-size: 0.7rem;
+    color: rgba(187, 134, 252, 0.25);
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* Botón Discord mejorado */
+.terminal-btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(187, 134, 252, 0.08);
+    border: 1px solid var(--secondary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border-radius: 3px;
+    margin-top: 8px;
+}
+
+.terminal-btn-action:hover {
+    background: rgba(187, 134, 252, 0.18);
+    box-shadow: 0 0 12px rgba(187, 134, 252, 0.15);
+}
+
+.terminal-btn-action img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%) invert(81%) sepia(17%) saturate(1230%) hue-rotate(275deg) brightness(99%) contrast(98%);
+}
+
+/* Tarjetas de cursos */
+.course-card {
+    border-color: rgba(3, 218, 198, 0.25);
+}
+
+.course-card .terminal-command {
+    color: var(--course-color);
+}
+
+.course-card:hover {
+    border-color: var(--course-color);
+    animation: subtleGlow 2.5s infinite;
+}
+
+.course-hover-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        transparent 48%,
+        var(--course-color) 49%,
+        var(--course-color) 51%,
+        transparent 52%
+    );
+    background-size: 8px 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.course-card:hover .course-hover-effect {
+    opacity: 0.08;
+}
+
+/* Tarjeta unificada */
+.unified-card {
+    max-width: 780px;
+    margin: 25px auto 0;
+    border-color: rgba(207, 102, 121, 0.25);
+}
+
+.unified-card:hover {
+    border-color: var(--prompt-color);
+}
+
+/* Imágenes ajustadas */
+.terminal-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin-top: 12px;
+    border-radius: 3px;
+    filter: grayscale(25%) contrast(105%) brightness(0.95);
+    transition: all 0.3s ease;
+}
+
+.terminal-card:hover .terminal-img {
+    filter: grayscale(0%) contrast(100%) brightness(1.05);
+}
+
+/* Responsive mejorado */
 @media (max-width: 768px) {
-    .card,
-    .cardDos,
-    .cardThree {
-        width: 90%;
-        margin: 30px auto;
-        padding: 20px;
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        animation: floatCard 4s ease-in-out infinite;
-        transform: translateZ(0);
+    .terminal-window {
+        margin: 0 10px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
     }
-
-    .card {
-        background: linear-gradient(135deg, #011d1d, #004346);
-        box-shadow: 0 0 40px #6fffe9, 0 0 80px #6fffe9 inset;
-        margin-top: 200px;
-        margin-bottom: 60px;
-        height: auto;
+    
+    .terminal-body {
+        padding: 10px 14px;
     }
-
-    .cardDos {
-        background: linear-gradient(135deg, #0f0f3f, #1c1c5c);
-        box-shadow: 0 0 30px #c77dff, 0 0 60px #c77dff inset;
-        margin-bottom: 40px;
+    
+    .terminal-cards, .terminal-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
-
-    .cardThree {
-        background: linear-gradient(135deg, #400016, #800f2f);
-        box-shadow: 0 0 30px #ff758f, 0 0 60px #ff758f inset;
+    
+    .terminal-card {
+        padding: 14px;
     }
-
-    .titleCard {
-        font-size: 1.6rem;
-        text-align: center;
-        margin-bottom: 10px;
-        background: linear-gradient(90deg, #6fffe9, #fff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .descriptionCard {
-        font-size: 15px;
-        text-align: justify;
-        color: #eee;
-        margin-bottom: 20px;
-        line-height: 1.6;
-        animation: fadeIn 1.5s ease-in-out both;
-    }
-
-    .imageSocial {
-        width: 90%;
-        max-width: 250px;
-        height: auto;
-        animation: popImage 2s ease forwards;
-    }
-
-    .titleHome {
-        font-size: 2.4rem;
-        text-align: center;
-        background: linear-gradient(90deg, #6fffe9, #fff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .titleSubtitle {
-        font-size: 1.3rem;
-        text-align: center;
-        color: #ccc;
-    }
-
-    svg {
-        width: 40px;
-        top: 100px;
-        animation: pulseIcon 2s infinite ease-in-out;
-    }
-
-    .invisible {
-        height: 60px;
-    }
-
-    @keyframes floatCard {
-        0% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0px);
-        }
-    }
-
-    @keyframes popImage {
-        0% {
-            transform: scale(0.8);
-            opacity: 0;
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes pulseIcon {
-        0% {
-            transform: scale(1);
-            color: #fff;
-        }
-        50% {
-            transform: scale(1.2);
-            color: #6fffe9;
-        }
-        100% {
-            transform: scale(1);
-            color: #fff;
-        }
+    
+    .command-section {
+        margin: 15px 0 10px;
     }
 }
+
+@media (max-width: 480px) {
+    .terminal-header {
+        padding: 6px 12px;
+    }
+    
+    .terminal-btn {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .terminal-title {
+        font-size: 0.8rem;
+    }
+    
+    .terminal-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .terminal-content p {
+        font-size: 0.85rem;
+    }
+    
+    .terminal-btn-action {
+        padding: 7px 12px;
+        font-size: 0.9rem;
+    }
+}
+
