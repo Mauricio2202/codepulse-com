@@ -84,7 +84,7 @@ function Home() {
         },
         {
             title: "Ingeniería de Software",
-            description: "Patrones de diseño, arquitectura y metodologías ágiles. PREM",
+            description: "Patrones de diseño, arquitectura y metodologías ágiles. PREMIUM",
             color: "#6fffe9",
             command: "software_eng"
         }
@@ -158,7 +158,7 @@ function Home() {
                         >
                             <div className='terminal-command'>$ community_update</div>
                             <div className='terminal-content'>
-                                <p>Lives en Discord gratuitos en el horario de 7:00 p.m. Hora México - Solo faltan días</p>
+                                <p>Lives en Discord gratuitos en el horario de 7:00 p.m. Hora México - Ahora disponible</p>
                                 <a href="https://discord.gg/NKReERuh" className='terminal-btn-action'>
                                     <img src={DiscordImage} alt="Discord" />
                                     <span>Unirse a Discord</span>
