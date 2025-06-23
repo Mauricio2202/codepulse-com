@@ -66,6 +66,82 @@ body, html {
     color: rgba(0, 255, 65, 0.15);
 }
 
+.presentacion_curso_Java {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en varias líneas si es necesario */
+    padding: 8%;
+    background-color: #001233;
+    border: 1px solid #fb5607;
+    border-radius: 10px;
+    gap: 30px; /* Espaciado entre elementos */
+    text-align: center; /* Centra texto en pantallas pequeñas */
+}
+
+.titleCursojava {
+    font-size: 50px;
+    color: #FFF;
+}
+
+.logoCursoJava {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    transform: rotate(-10deg);
+}
+
+.btnCursoJava {
+    padding: 15px 20px;
+    background-color: #00b4d8;
+    font-size: 14px;
+    border: none;
+    border-radius: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Estilo general para enlaces */
+a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+/* Media Query para tablets */
+@media (max-width: 768px) {
+    .titleCursojava {
+        font-size: 36px;
+    }
+
+    .logoCursoJava {
+        width: 300px;
+        transform: rotate(0deg); /* Se puede quitar la inclinación en móviles */
+    }
+
+    .btnCursoJava {
+        font-size: 13px;
+        padding: 12px 18px;
+    }
+}
+
+/* Media Query para móviles */
+@media (max-width: 480px) {
+    .titleCursojava {
+        font-size: 28px;
+    }
+
+    .logoCursoJava {
+        width: 250px;
+    }
+
+    .btnCursoJava {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+}
+
+
 /* Ventana terminal compacta */
 .terminal-window {
     position: relative;

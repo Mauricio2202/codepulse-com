@@ -3,6 +3,7 @@ import '../css/Home.css';
 import DiscordImage from '../img/discord.png';
 import UsuariosImage from '../img/usuarios.png';
 import CursosImage from '../img/cursos.png';
+import CursoJava from '../img/Java-logo.png';
 
 function Home() {
 
@@ -149,8 +150,15 @@ function Home() {
                         <span className='terminal-prompt'>$&gt;</span>
                         <span className='terminal-text'> novedades --list<span className='cursor'></span></span>
                     </div>
-
+                    <div className="presentacion_curso_Java">
+                        <img src={ CursoJava } alt="java" className='logoCursoJava' />
+                        <h1 className='titleCursojava'>Curso de Java disponible para inscripción</h1>
+                    </div>
+                    <button className='btnCursoJava'><a href="https://api.whatsapp.com/send/?phone=525636063000&text&type=phone_number&app_absent=0">
+                        Contactar al Instructor
+                    </a></button>
                     <div className='terminal-cards'>
+                
                         <div 
                             className={`terminal-card ${activeCommand === 'community_update' ? 'active' : ''}`}
                             onMouseEnter={() => handleCommandHover('community_update')}
