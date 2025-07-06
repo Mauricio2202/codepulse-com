@@ -1,239 +1,190 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Home.css';
 import DiscordImage from '../img/discord.png';
 import UsuariosImage from '../img/usuarios.png';
 import CursosImage from '../img/cursos.png';
 import CursoJava from '../img/Java-logo.png';
+import { FaSun, FaMoon, FaTerminal, FaDiscord, FaUsers, FaBook, FaCode } from 'react-icons/fa';
 
 function Home() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [activeCommand, setActiveCommand] = useState(null);
+  const [typingComplete, setTypingComplete] = useState(false);
 
-    const [activeCommand, setActiveCommand] = useState(null);
-    const [matrixRain, setMatrixRain] = useState([]);
+  // Efecto para animación de escritura
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTypingComplete(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
-    useEffect(() => {
-        // Efecto Matrix Rain
-        const chars = "01";
-        const columns = Math.floor(window.innerWidth / 20);
-        const newMatrix = Array(columns).fill().map((_, i) => ({
-            position: i * 20,
-            speed: 5 + Math.random() * 10,
-            chars: Array(20).fill().map(() => chars[Math.floor(Math.random() * chars.length)]),
-            opacity: Math.random() * 0.2
-        }));
-        setMatrixRain(newMatrix);
+  const courses = [
+    {
+      title: "React desde Cero",
+      description: "Domina React con hooks, context API, Redux y pruebas unitarias.",
+      color: "#61dafb",
+      command: "react_course",
+      icon: <FaCode />
+    },
+    {
+      title: "Java desde Cero",
+      description: "Aprende Java desde cero con Interfaces de Usuario.",
+      color: "#5382a1",
+      command: "java_course",
+      icon: <FaCode />
+    },
+    {
+      title: "C# .NET Framework",
+      description: "Desarrollo profesional con C# y ASP.NET Core.",
+      color: "#9b4f96",
+      command: "csharp_course",
+      icon: <FaCode />
+    },
+    {
+      title: "Programación en C++",
+      description: "Desde sintaxis básica hasta creación de programas complejos.",
+      color: "#00599c",
+      command: "cpp_course",
+      icon: <FaCode />
+    },
+    {
+      title: "SQL desde Cero",
+      description: "Consultas básicas y lógica de consultas avanzadas",
+      color: "#f29111",
+      command: "sql_course",
+      icon: <FaCode />
+    },
+    {
+      title: "Ingeniería de Software",
+      description: "Patrones de diseño, arquitectura y metodologías ágiles. PREMIUM",
+      color: "#6fffe9",
+      command: "software_eng",
+      icon: <FaCode />
+    }
+  ];
 
-        // Efecto de terminal typing
-        const elements = document.querySelectorAll('.terminal-text');
-        elements.forEach(el => {
-            const text = el.textContent;
-            el.textContent = '';
-            
-            let i = 0;
-            const typing = setInterval(() => {
-                if (i < text.length) {
-                    el.textContent += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(typing);
-                    el.querySelector('.cursor')?.classList.add('active');
-                }
-            }, 20);
-        });
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
 
-        // Animación Matrix
-        const interval = setInterval(() => {
-            setMatrixRain(prev => prev.map(col => ({
-                ...col,
-                chars: [...col.chars.slice(1), chars[Math.floor(Math.random() * chars.length)]],
-                opacity: Math.random() < 0.1 ? Math.random() * 0.2 : col.opacity
-            })));
-        }, 100);
+  const handleCommandHover = (command) => {
+    setActiveCommand(command);
+  };
 
-        return () => clearInterval(interval);
-    }, []);
-
-    const courses = [
-        {
-            title: "React desde Cero",
-            description: "Domina React con hooks, context API, Redux y pruebas unitarias.",
-            color: "#61dafb",
-            command: "react_course"
-        },
-        {
-            title: "Java desde Cero",
-            description: "Aprende Java desde cero con Interfaces de Usuario.",
-            color: "#5382a1",
-            command: "java_course"
-        },
-        {
-            title: "C# .NET Framework",
-            description: "Desarrollo profesional con C# y ASP.NET Core.",
-            color: "#9b4f96",
-            command: "csharp_course"
-        },
-        {
-            title: "Programación en C++",
-            description: "Desde sintaxis básica hasta creación de programas complejos.",
-            color: "#00599c",
-            command: "cpp_course"
-        },
-        {
-            title: "SQL desde Cero",
-            description: "Consultas básicas y lógica de consultas avanzadas",
-            color: "#f29111",
-            command: "sql_course"
-        },
-        {
-            title: "Ingeniería de Software",
-            description: "Patrones de diseño, arquitectura y metodologías ágiles. PREMIUM",
-            color: "#6fffe9",
-            command: "software_eng"
-        }
-    ];
-
-    const handleCommandHover = (command) => {
-        setActiveCommand(command);
-    };
-
-    
-
-    return (
-        <div className='matrix-container'>
-            {/* Efecto Matrix Rain */}
-            {matrixRain.map((col, i) => (
-                <div 
-                    key={i} 
-                    className="matrix-column" 
-                    style={{ 
-                        left: `${col.position}px`,
-                        opacity: col.opacity,
-                        animation: `matrix-rain ${col.speed}s linear infinite`
-                    }}
-                >
-                    {col.chars.map((char, j) => (
-                        <span key={j} style={{ 
-                            color: j === col.chars.length - 1 ? '#fff' : '#0f0',
-                            opacity: 1 - (j / col.chars.length)
-                        }}>
-                            {char}
-                        </span>
-                    ))}
-                </div>
-                
-            ))}
-        
-
-            {/* Contenido principal */}
-            <div className='terminal-window'>
-                <div className='terminal-header'>
-                    <div className='terminal-buttons'>
-                        <span className='terminal-btn close'></span>
-                        <span className='terminal-btn minimize'></span>
-                        <span className='terminal-btn maximize'></span>
-                    </div>
-                    <span className='terminal-title'>user@codepulse: ~</span>
-                </div>
-                
-                <div className='terminal-body'>
-                    <div className='terminal-line'>
-                        <span className='terminal-prompt'>$&gt;</span>
-                        <span className='terminal-text'> Bienvenido a <span className='glitch' data-text="CodePulse">CodePulse</span><span className='cursor'></span></span>
-                    </div>
-                    
-                    <div className='terminal-line'>
-                        <span className='terminal-prompt'>$&gt;</span>
-                        <span className='terminal-text'> Transformamos principiantes en expertos<span className='cursor'></span></span>
-                    </div>
-
-                    {/* Sección Novedades */}
-                    <div className='terminal-line command-section'>
-                        <span className='terminal-prompt'>$&gt;</span>
-                        <span className='terminal-text'> novedades --list<span className='cursor'></span></span>
-                    </div>
-                    <div className="presentacion_curso_Java">
-                        <img src={ CursoJava } alt="java" className='logoCursoJava' />
-                        <h1 className='titleCursojava'>Curso de Java disponible para inscripción</h1>
-                    </div>
-                    <button className='btnCursoJava'><a href="https://api.whatsapp.com/send/?phone=525636063000&text&type=phone_number&app_absent=0">
-                        Contactar al Instructor
-                    </a></button>
-                    <div className='terminal-cards'>
-                
-                        <div 
-                            className={`terminal-card ${activeCommand === 'community_update' ? 'active' : ''}`}
-                            onMouseEnter={() => handleCommandHover('community_update')}
-                            onMouseLeave={() => setActiveCommand(null)}
-                        >
-                            <div className='terminal-command'>$ community_update</div>
-                            <div className='terminal-content'>
-                                <p>Lives en Discord gratuitos en el horario de 7:00 p.m. Hora México - Ahora disponible</p>
-                                <a href="https://discord.gg/NKReERuh" className='terminal-btn-action'>
-                                    <img src={DiscordImage} alt="Discord" />
-                                    <span>Unirse a Discord</span>
-                                </a>
-                            </div>
-                            <div className='terminal-decoration'>// 01000100 01101001 01110011 01100011 01101111 01110010 01100100</div>
-                        </div>
-
-                        <div 
-                            className={`terminal-card ${activeCommand === 'participation_upgrade' ? 'active' : ''}`}
-                            onMouseEnter={() => handleCommandHover('participation_upgrade')}
-                            onMouseLeave={() => setActiveCommand(null)}
-                        >
-                            <div className='terminal-command'>$ participation_upgrade</div>
-                            <div className='terminal-content'>
-                                <p>Colabora en proyectos con la comunidad.</p>
-                                <img src={UsuariosImage} alt="Comunidad" className='terminal-img' />
-                            </div>
-                            <div className='terminal-decoration'>// 0x43 0x6F 0x6C 0x61 0x62 0x6F 0x72 0x61</div>
-                        </div>
-                    </div>
-
-                    {/* Sección Cursos */}
-                    <div className='terminal-line command-section'>
-                        <span className='terminal-prompt'>$&gt;</span>
-                        <span className='terminal-text'> cursos --list --premium<span className='cursor'></span></span>
-                    </div>
-
-                    <div className='terminal-grid'>
-                        {courses.map((course, index) => (
-                            <div 
-                                key={index} 
-                                className={`terminal-card course-card ${activeCommand === course.command ? 'active' : ''}`}
-                                style={{ '--course-color': course.color }}
-                                onMouseEnter={() => handleCommandHover(course.command)}
-                                onMouseLeave={() => setActiveCommand(null)}
-                            >
-                                <div className='terminal-command'>$ {course.command}</div>
-                                <div className='terminal-content'>
-                                    <h3>{course.title}</h3>
-                                    <p>{course.description}</p>
-                                </div>
-                                <div className='terminal-decoration'>// {course.command.toUpperCase()}</div>
-                                <div className='course-hover-effect'></div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Sección Unificada */}
-                    <div className='terminal-card unified-card'>
-                        <div className='terminal-command'>$ unified_courses</div>
-                        <div className='terminal-content'>
-                            <p>Enfocados en Frameworks completos con calidad elevada.</p>
-                            <img src={CursosImage} alt="Cursos" className='terminal-img' />
-                        </div>
-                        <div className='terminal-decoration'>// if (knowledge) &#123; success = true; &#125;</div>
-                    </div>
-
-                    {/* Línea final */}
-                    <div className='terminal-line'>
-                        <span className='terminal-prompt'>$&gt;</span>
-                        <span className='terminal-text'> <span className='cursor'></span></span>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className={`app-container ${darkMode ? 'dark' : 'light'}`}>
+      {/* Header */}
+      <header className="app-header">
+        <div className="header-content">
+          <div className="logo-container">
+            <FaTerminal className="logo-icon" />
+            <h1>CodePulse</h1>
+          </div>
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {darkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
+            <span>{darkMode ? 'Modo Claro' : 'Modo Oscuro'}</span>
+          </button>
         </div>
-    )
+      </header>
+
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <div className="typing-container">
+            <span className="command-prompt">$</span>
+            <span className={`typing-text ${typingComplete ? 'complete' : ''}`}>
+              {typingComplete ? 'Bienvenido a CodePulse' : 'Bienvenido a CodePulse'}
+            </span>
+            {!typingComplete && <span className="typing-cursor">|</span>}
+          </div>
+          <p className="hero-subtitle">Transformamos principiantes en expertos</p>
+        </div>
+      </section>
+
+      {/* Novedades Section */}
+      <section className="section-container">
+        <div className="section-header">
+          <div className="command-prompt">$</div>
+          <h2 className="section-title">novedades --list</h2>
+        </div>
+
+        <div className="course-presentation">
+          <img src={CursoJava} alt="Java Course" className="course-logo" />
+          <div className="course-info">
+            <h3>Curso de Java disponible para inscripción</h3>
+            <p>Aprende desarrollo backend con Java y Spring Boot desde cero</p>
+            <a href="https://api.whatsapp.com/send/?phone=525636063000&text&type=phone_number&app_absent=0" 
+               className="action-btn primary">
+              Contactar al Instructor
+            </a>
+          </div>
+        </div>
+
+        <div className="cards-grid">
+          <div className={`info-card ${activeCommand === 'community_update' ? 'active' : ''}`}
+               onMouseEnter={() => handleCommandHover('community_update')}
+               onMouseLeave={() => setActiveCommand(null)}>
+            <div className="card-icon"><FaDiscord /></div>
+            <h3>$ community_update</h3>
+            <p>Lives en Discord gratuitos en el horario de 7:00 p.m. Hora México</p>
+            <a href="https://discord.gg/NKReERuh" className="action-btn">
+              <FaDiscord /> Unirse a Discord
+            </a>
+          </div>
+
+          <div className={`info-card ${activeCommand === 'participation_upgrade' ? 'active' : ''}`}
+               onMouseEnter={() => handleCommandHover('participation_upgrade')}
+               onMouseLeave={() => setActiveCommand(null)}>
+            <div className="card-icon"><FaUsers /></div>
+            <h3>$ participation_upgrade</h3>
+            <p>Colabora en proyectos con la comunidad</p>
+            <img src={UsuariosImage} alt="Comunidad" className="card-image" />
+          </div>
+        </div>
+      </section>
+
+      {/* Cursos Section */}
+      <section className="section-container">
+        <div className="section-header">
+          <div className="command-prompt">$</div>
+          <h2 className="section-title">cursos --list --premium</h2>
+        </div>
+
+        <div className="courses-grid">
+          {courses.map((course, index) => (
+            <div key={index} 
+                 className={`course-card ${activeCommand === course.command ? 'active' : ''}`}
+                 style={{ '--course-color': course.color }}
+                 onMouseEnter={() => handleCommandHover(course.command)}
+                 onMouseLeave={() => setActiveCommand(null)}>
+              <div className="course-icon">{course.icon}</div>
+              <h3>$ {course.command}</h3>
+              <h4>{course.title}</h4>
+              <p>{course.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Cursos Unificados */}
+      <section className="section-container unified-section">
+        <div className="unified-card">
+          <div className="section-header">
+            <div className="command-prompt">$</div>
+            <h2 className="section-title">unified_courses</h2>
+          </div>
+          <p>Enfocados en Frameworks completos con calidad elevada.</p>
+          <img src={CursosImage} alt="Cursos" className="unified-image" />
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="app-footer">
+        <p>© {new Date().getFullYear()} CodePulse | Todos los derechos reservados</p>
+      </footer>
+    </div>
+  );
 }
 
 export default Home;
