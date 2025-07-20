@@ -5,6 +5,8 @@ import CodeServiceUno from '../assets/code_service_1.png'
 import TesterServiceDos from '../assets/tester_service_2.png'
 import ClasesServiceDos from '../assets/clases_service_3.png'
 import RecursosServiceDos from '../assets/recursos_service_4.png'
+import Eye from '../assets/eye.png'
+import LaptopDetailD from '../assets/laptop__detail_2.png'
 
 function Home() {
 
@@ -17,7 +19,7 @@ function Home() {
         Corrige con evidencia. Y escala con visión."</p></i>
         <i><p className='text__phylosophy'>- Filosofía de CodePulse Community</p></i>
         <h2>Únete a la comunidad y descúbre <br />
-        lo que tenemos para ti.</h2>
+        lo que tenemos para ti. <span className="span">Cotiza tu web  <br /> con nosotros</span></h2>
         <a href="https://chat.whatsapp.com/GpZP3i6ePsgErmukEFcJl5">
         <button className='btnUnirme'>Unirme</button><br />
         </a>
@@ -48,13 +50,26 @@ function Home() {
           <h2 className='text__service__3'>Asiste a las clases <br /> gratuitas de categoría <br /> técnica.</h2>
         </article>
 
-        <article>
+        <article className="article_final">
           <h2 className='text__service__2'>Adquiere recursos de <br /> categoría premium <br /> para tu aprendizaje. </h2>
           <div className="container__service__div">
             <img src={ RecursosServiceDos } alt="tester__service" className='image__service__4' />
           </div>
         </article>
       </section>
+
+      <div className="section_detail">
+        <h1 className="title_detail">
+          Te ayudamos a embellecer tu web con técnicas UI/UX
+        </h1>
+        <img src={ Eye } alt="eye" className='img__eye' />
+        <img src={ LaptopDetailD } alt="laptop" className='img_laptop_detail' />
+        <h2 className='enter_final'>Entra ahora</h2>
+        <button className='btnUnirme btnFinal'>Unirme</button><br />
+        <p className='todos_los_derechos_reservados'>
+          © Todos los derechos reservados · CodePulse Community — Mauricio Garro R. · OmegaDev
+        </p>
+      </div>
     </div>
   )
 
