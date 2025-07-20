@@ -1,535 +1,190 @@
-:root {
-  /* Light Theme */
-  --light-bg: #f8f9fa;
-  --light-text: #212529;
-  --light-primary: #4e66f8;
-  --light-secondary: #6c757d;
-  --light-card: #ffffff;
-  --light-border: #e9ecef;
-  --light-accent: #20c997;
-
-  /* Dark Theme */
-  --dark-bg: #121212;
-  --dark-text: #e0e0e0;
-  --dark-primary: #7c4dff;
-  --dark-secondary: #9e9e9e;
-  --dark-card: #1e1e1e;
-  --dark-border: #333333;
-  --dark-accent: #00acc1;
-
-  /* Shared */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --spacing-xs: 8px;
-  --spacing-sm: 16px;
-  --spacing-md: 24px;
-  --spacing-lg: 32px;
-  --spacing-xl: 48px;
-  --font-sm: 0.875rem;
-  --font-md: 1rem;
-  --font-lg: 1.25rem;
-  --font-xl: 1.5rem;
-  --font-xxl: 2rem;
-  --transition: 0.3s ease;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-}
-
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 body {
-  font-family: 'Fira Code', monospace, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell;
-  line-height: 1.6;
-  transition: background-color var(--transition), color var(--transition);
+  background-color: #000;
 }
 
-.app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+h1 {
+  color: #FFF;
+  margin: 30px;
+  font-size: 4.4rem;
 }
 
-.app-container.light {
-  background-color: var(--light-bg);
-  color: var(--light-text);
+h2 {
+  color: #FFF;
+  font-size: 2em;
+  margin: 30px;
+  position: relative;
+  top: 60px;
 }
 
-.app-container.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
+h1::selection {
+  background-color: #c19ee0;
+  color: #6f2dbd;
 }
 
-/* Header */
-.app-header {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-bottom: 1px solid;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
+.sun__img {
+  position: absolute;
+  top: -180px;
+  left: 420px;
+  z-index: 0;
+  width: 1000px;
+  animation: big 8s infinite;
 }
 
-.light .app-header {
-  background-color: rgba(248, 249, 250, 0.9);
-  border-color: var(--light-border);
+@keyframes big {
+  0% {
+    width: 1000px;
+  }
+  30% {
+    left: -50px;
+    top: -200px;
+    width: 500px;
+  }
+  50% {
+    width: 800px;
+    left: -50px;
+    top: 150px;
+  }
+  70% {
+    width: 200px;
+    left: 1300px;
+    top: 250px;
+  }
+  90% {
+    width: 500px;
+    left: 1000px;
+    top: -190px;
+  }
+  100% {
+    width: 1000px;
+  }
 }
 
-.dark .app-header {
-  background-color: rgba(30, 30, 30, 0.9);
-  border-color: var(--dark-border);
+.phylosophy {
+  color: #000;
+  margin: 30px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background-color: #48cae4;
+  max-width: max-content;
+  padding: 5px;
+  transform: skewX(-10deg);
 }
 
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.text__phylosophy {
+  margin: 30px;
+  border-bottom: 3px solid #c19ee0;
+  max-width: max-content;
+  color: #FFF;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-}
-
-.logo-icon {
-  font-size: var(--font-xl);
-}
-
-.light .logo-icon {
-  color: var(--light-primary);
-}
-
-.dark .logo-icon {
-  color: var(--dark-primary);
-}
-
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-lg);
-  border: none;
+.btnUnirme {
+  position: relative;
+  left: 50px;
+  top: 60px;
+  padding: 5px;
+  width: 100px;
+  font-size: 18px;
   cursor: pointer;
-  font-family: 'Fira Code', monospace;
-  font-size: var(--font-sm);
-  transition: var(--transition);
+  background: transparent;
+  color: #FFF;
+  border: 1px solid #FFF;
+  transition: 0.6s;
 }
 
-.light .theme-toggle {
-  background-color: rgba(78, 102, 248, 0.1);
-  color: var(--light-primary);
+.btnUnirme:hover {
+  transition: 0.6s;
+  background-color: #FFF;
+  color: #000;
 }
 
-.dark .theme-toggle {
-  background-color: rgba(124, 77, 255, 0.1);
-  color: var(--dark-primary);
-}
-
-.theme-toggle:hover {
-  transform: translateY(-1px);
-}
-
-.light .theme-toggle:hover {
-  background-color: rgba(78, 102, 248, 0.2);
-}
-
-.dark .theme-toggle:hover {
-  background-color: rgba(124, 77, 255, 0.2);
-}
-
-/* Hero Section */
-.hero-section {
-  padding: var(--spacing-xl) var(--spacing-md);
-  text-align: center;
+.chinese__img {
   position: relative;
-  overflow: hidden;
+  left: 57%;
+  top: -456px;
+  width: 650px;
 }
 
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
+@media (max-width: 1200px) {
+  .sun__img {
+    width: 800px;
+    left: 250px;
+    top: -150px;
+  }
+
+  .chinese__img {
+    width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -420px;
+  }
 }
 
-.typing-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--spacing-sm);
-  font-size: var(--font-xl);
-}
-
-.command-prompt {
-  margin-right: var(--spacing-xs);
-  font-weight: bold;
-}
-
-.light .command-prompt {
-  color: var(--light-primary);
-}
-
-.dark .command-prompt {
-  color: var(--dark-primary);
-}
-
-.typing-text {
-  font-weight: bold;
-}
-
-.typing-cursor {
-  animation: blink 1s infinite;
-  margin-left: 2px;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-.hero-subtitle {
-  font-size: var(--font-lg);
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Sections */
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--spacing-lg) var(--spacing-md);
-  width: 100%;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--spacing-md);
-}
-
-.section-title {
-  font-size: var(--font-lg);
-  margin-left: var(--spacing-xs);
-}
-
-/* Course Presentation */
-.course-presentation {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: var(--spacing-lg) 0;
-  margin-bottom: var(--spacing-lg);
-}
-
-.course-logo {
-  width: 200px;
-  height: auto;
-  margin-bottom: var(--spacing-md);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-}
-
-.course-info h3 {
-  font-size: var(--font-lg);
-  margin-bottom: var(--spacing-xs);
-}
-
-.course-info p {
-  margin-bottom: var(--spacing-md);
-  opacity: 0.9;
-}
-
-/* Cards Grid */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
-}
-
-.info-card {
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.light .info-card {
-  background: var(--light-card);
-  border: 1px solid var(--light-border);
-  box-shadow: var(--shadow-sm);
-}
-
-.dark .info-card {
-  background: var(--dark-card);
-  border: 1px solid var(--dark-border);
-}
-
-.info-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-}
-
-.info-card.active {
-  border-color: var(--light-accent);
-}
-
-.dark .info-card.active {
-  border-color: var(--dark-accent);
-}
-
-.card-icon {
-  font-size: var(--font-xl);
-  margin-bottom: var(--spacing-sm);
-}
-
-.light .card-icon {
-  color: var(--light-primary);
-}
-
-.dark .card-icon {
-  color: var(--dark-primary);
-}
-
-.info-card h3 {
-  margin-bottom: var(--spacing-xs);
-  font-size: var(--font-md);
-}
-
-.info-card p {
-  margin-bottom: var(--spacing-md);
-  font-size: var(--font-sm);
-  opacity: 0.9;
-}
-
-.card-image {
-  width: 100%;
-  border-radius: var(--radius-sm);
-  margin-top: var(--spacing-sm);
-  box-shadow: var(--shadow-sm);
-}
-
-/* Courses Grid */
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
-}
-
-.course-card {
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.light .course-card {
-  background: var(--light-card);
-  border: 1px solid var(--light-border);
-}
-
-.dark .course-card {
-  background: var(--dark-card);
-  border: 1px solid var(--dark-border);
-}
-
-.course-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-}
-
-.course-card.active {
-  border-color: var(--course-color);
-}
-
-.course-icon {
-  font-size: var(--font-lg);
-  margin-bottom: var(--spacing-sm);
-  color: var(--course-color);
-}
-
-.course-card h3 {
-  font-size: var(--font-sm);
-  margin-bottom: var(--spacing-xs);
-  color: var(--course-color);
-}
-
-.course-card h4 {
-  font-size: var(--font-md);
-  margin-bottom: var(--spacing-xs);
-}
-
-.course-card p {
-  font-size: var(--font-sm);
-  opacity: 0.9;
-}
-
-/* Unified Section */
-.unified-section {
-  text-align: center;
-}
-
-.unified-card {
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-md);
-  margin: 0 auto;
-  max-width: 800px;
-}
-
-.light .unified-card {
-  background: var(--light-card);
-  border: 1px solid var(--light-border);
-}
-
-.dark .unified-card {
-  background: var(--dark-card);
-  border: 1px solid var(--dark-border);
-}
-
-.unified-image {
-  max-width: 100%;
-  border-radius: var(--radius-md);
-  margin-top: var(--spacing-md);
-  box-shadow: var(--shadow-md);
-}
-
-/* Buttons */
-.action-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-lg);
-  font-family: 'Fira Code', monospace;
-  font-size: var(--font-sm);
-  text-decoration: none;
-  transition: var(--transition);
-  border: none;
-  cursor: pointer;
-}
-
-.action-btn.primary {
-  padding: var(--spacing-sm) var(--spacing-md);
-  font-size: var(--font-md);
-}
-
-.light .action-btn {
-  background: rgba(78, 102, 248, 0.1);
-  color: var(--light-primary);
-  border: 1px solid rgba(78, 102, 248, 0.3);
-}
-
-.dark .action-btn {
-  background: rgba(124, 77, 255, 0.1);
-  color: var(--dark-primary);
-  border: 1px solid rgba(124, 77, 255, 0.3);
-}
-
-.light .action-btn.primary {
-  background: var(--light-primary);
-  color: white;
-}
-
-.dark .action-btn.primary {
-  background: var(--dark-primary);
-  color: white;
-}
-
-.action-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-}
-
-.light .action-btn:not(.primary):hover {
-  background: rgba(78, 102, 248, 0.2);
-}
-
-.dark .action-btn:not(.primary):hover {
-  background: rgba(124, 77, 255, 0.2);
-}
-
-/* Footer */
-.app-footer {
-  padding: var(--spacing-md);
-  text-align: center;
-  margin-top: auto;
-  border-top: 1px solid;
-}
-
-.light .app-footer {
-  border-color: var(--light-border);
-}
-
-.dark .app-footer {
-  border-color: var(--dark-border);
-}
-
-.app-footer p {
-  font-size: var(--font-sm);
-  opacity: 0.8;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .hero-section {
-    padding: var(--spacing-lg) var(--spacing-md);
+  h1 {
+    font-size: 3rem;
   }
-  
-  .typing-container {
-    font-size: var(--font-lg);
+
+  h2 {
+    font-size: 1.6rem;
+    top: 40px;
   }
-  
-  .hero-subtitle {
-    font-size: var(--font-md);
+
+  .sun__img {
+    display: none;
   }
-  
-  .course-presentation {
-    padding: var(--spacing-md) 0;
+
+  .btnUnirme {
+    left: 30px;
+    top: 50px;
+    font-size: 16px;
+    width: 90px;
   }
-  
-  .course-logo {
-    width: 150px;
-  }
-  
-  .cards-grid, .courses-grid {
-    grid-template-columns: 1fr;
+
+  .chinese__img {
+    width: 200px;
+    top: 10px;
+    left: 300px;
   }
 }
 
 @media (max-width: 480px) {
-  .header-content {
-    flex-direction: column;
-    gap: var(--spacing-sm);
+  h1 {
+    font-size: 2.2rem;
+    margin: 20px;
   }
-  
-  .theme-toggle span {
+
+  h2 {
+    font-size: 1.2rem;
+    margin: 20px;
+    top: 30px;
+  }
+
+  .phylosophy,
+  .text__phylosophy {
+    margin: 20px;
+  }
+
+  .btnUnirme {
+    left: 20px;
+    top: 40px;
+    font-size: 14px;
+    width: 80px;
+  }
+
+  .sun__img {
     display: none;
   }
-  
-  .typing-container {
-    font-size: var(--font-md);
-    justify-content: flex-start;
-  }
-  
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .section-title {
-    margin-left: 0;
-    margin-top: var(--spacing-xs);
+
+  .chinese__img {
+    width: 200px;
+    top: 60px;
+    left: 150px;
   }
 }
