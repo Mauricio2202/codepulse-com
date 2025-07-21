@@ -38,7 +38,7 @@ h1::selection {
   left: 420px;
   z-index: 0;
   width: 1000px;
-  animation: big 8s infinite;
+  animation: big 12s infinite;
 }
 
 @keyframes big {
